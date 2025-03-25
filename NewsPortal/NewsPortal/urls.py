@@ -9,6 +9,7 @@ urlpatterns = [
     path('sign/', include('sign.urls')),
     path('accounts/', include('allauth.urls')),
     path('', include('biblio.urls')),
+    path('appointments/', include('appointments.urls')),
 ]
 
 

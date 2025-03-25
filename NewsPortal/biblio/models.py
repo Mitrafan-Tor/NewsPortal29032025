@@ -45,8 +45,8 @@ class Post(models.Model):
     text = models.TextField()
     rating = models.IntegerField(default=0)
 
-    def __str__(self):
-        return f'{self.name.title()}: {self.description[:10]}'
+    #def __str__(self):
+        #return f'{self.name.title()}: {self.description[:10]}'
 
     def get_absolute_url(self):
         return reverse('news_detail', args=[str(self.id)])

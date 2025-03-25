@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce851025-f3e3-4bdf-b609-d9ebde34a392" name="Changes" comment="Регистраци , верификация, группы и права доступа" />
+    <list default="true" id="ce851025-f3e3-4bdf-b609-d9ebde34a392" name="Changes" comment="Регистраци , верификация, группы и права доступа">
+      <change afterPath="$PROJECT_DIR$/NewsPortal/appointments/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPortal/templates/appointment_created.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPortal/templates/make_appointment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPortal.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPortal/NewsPortal/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPortal/NewsPortal/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPortal/NewsPortal/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPortal/NewsPortal/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPortal/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPortal/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPortal/templates/protect/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPortal/templates/protect/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -68,7 +78,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-14705d77f0bb-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.25659.43" />
+        <option value="bundled-python-sdk-4f4e415b4190-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.26053.29" />
       </set>
     </attachedChunks>
   </component>
