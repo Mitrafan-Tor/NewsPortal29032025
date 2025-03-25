@@ -10,11 +10,11 @@
 <form action="{% url 'appointments:make_appointment' %}" method="POST">
     {% csrf_token %}
     <label for="client_name">Ваше имя:</label>
-    <input type="text" name="client_name"><br>
+    <input type="text" id="client_name" name="client_name"><br>
     <label for="message">Наименование товара:</label>
-    <input type="text" name="message"><br>
+    <input type="text" id="message" name="message"><br>
     <label for="date">Выберите дату:</label>
-    <input type="date" name="date">
+    <input type="date" id="date" name="date">
     <input type="submit">
 </form>
 </body>
