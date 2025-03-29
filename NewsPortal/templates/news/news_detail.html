@@ -7,24 +7,71 @@
 
 {% block content %}
     <div class="container mt-3">
+        <!-- Добавляем сообщения об успешных действиях -->
+        {% if messages %}
+        <div class="alert-container">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
         <div class="news-detail">
             <h1>{{ news.title|censor }}</h1>
             <div class="post-content">
                 {{ news.text|censor|linebreaks }}
             </div>
             <div class="post-meta">
-                <p>Дата публикации: {{news.created_at|date:"d.m.Y H:i" }}</p>
-                <p>Автор: {{news.author.user.username }}</p>
+                <p>Дата публикации: {{ news.created_at|date:"d.m.Y H:i" }}</p>
+                <p>Автор: {{ news.author.user.username }}</p>
                 <p>
                     Категории:
                     {% for category in news.categories.all %}
-                        {{ category.name }}{% if not forloop.last %}, {% endif %}
+                        {{ category.name }}
+                        <span class="subscription-status">
+                            {% if user.is_authenticated %}
+                                {% if user in category.subscribers.all %}
+                                    <span class="text-success ms-2">
+                                        ✓ Вы подписаны
+                                    </span>
+                                    <a href="{% url 'biblio:unsubscribe_category' category.id %}"
+                                       class="btn btn-sm btn-outline-danger ms-2">
+                                        Отписаться
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'biblio:subscribe_category' category.id %}"
+                                       class="btn btn-sm btn-outline-success ms-2">
+                                        Подписаться
+                                    </a>
+                                {% endif %}
+                            {% else %}
+                                <small class="text-muted ms-2">(Войдите, чтобы подписаться)</small>
+                            {% endif %}
+                        </span>
+                        {% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 </p>
             </div>
             <div class="post-rating">
-                <p>Рейтинг: {{news.rating}}</p>
+                <p>Рейтинг: {{ news.rating }}</p>
             </div>
         </div>
     </div>
+
+    <style>
+        .subscription-status {
+            display: inline-block;
+            margin-left: 5px;
+        }
+        .text-success {
+            color: #28a745;
+            font-weight: 500;
+        }
+        .alert-container {
+            margin-bottom: 20px;
+        }
+    </style>
 {% endblock content %}

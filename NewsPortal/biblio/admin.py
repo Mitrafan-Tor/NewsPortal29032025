@@ -1,5 +1,11 @@
 from django.contrib import admin
 from .models import Author, Category, Post, PostCategory, Comment
+from .models import CategorySubscriber
+
+
+@admin.register(CategorySubscriber)
+class CategorySubscriberAdmin(admin.ModelAdmin):
+    list_display = ('user', 'category', 'subscribed_at')
 
 # Настраиваем отображение связанных категорий для постов
 class PostCategoryInline(admin.TabularInline):

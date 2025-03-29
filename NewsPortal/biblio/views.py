@@ -1,3 +1,7 @@
+from gc import get_objects
+
+from django.shortcuts import get_object_or_404, render
+from django.template.defaulttags import querystring
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post
@@ -5,6 +9,13 @@ from datetime import datetime
 from .search import SearchPost
 from .forms import PostForm
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.decorators import login_required
+
+from django.contrib.auth.decorators import login_required  #+
+from django.shortcuts import get_object_or_404, redirect   #+
+from .models import Category, CategorySubscriber           #+
+from django.shortcuts import redirect
+from django.urls import reverse
 
 
 
@@ -19,15 +30,8 @@ class NewsList(PermissionRequiredMixin, ListView):
 
     # Переопределяем функцию получения списка товаров
     def get_queryset(self):
-        # Получаем обычный запрос
         queryset = super().get_queryset().filter(post_type='NW')
-        # Используем наш класс фильтрации.
-        # self.request.GET содержит объект QueryDict, который мы рассматривали
-        # в этом юните ранее.
-        # Сохраняем нашу фильтрацию в объекте класса,
-        # чтобы потом добавить в контекст и использовать в шаблоне.
         self.filterset = SearchPost(self.request.GET, queryset)
-        # Возвращаем из функции отфильтрованный список товаров
         return self.filterset.qs
 
     # Метод get_context_data позволяет нам изменить набор данных,
@@ -148,3 +152,53 @@ class ArticlesDelete(PermissionRequiredMixin, DeleteView):
     permission_required = ('biblio.delete_post',)
 
 
+class CategoryListView(NewsList):
+    model = Post
+    template_name = 'news/category_list.html'
+    context_object_name = 'category_news_list'
+    filterset = None  # Явно отключаем фильтрацию
+
+    def get_queryset(self):
+        self.category = get_object_or_404(Category, id=self.kwargs['pk'])
+        queryset = super().get_queryset().filter(categories=self.category)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        # Добавляем информацию о подписке, если есть подписчики
+        if hasattr(self.category, 'subscribers'):
+            context['is_not_subscriber'] = (
+                    self.request.user.is_authenticated and
+                    self.request.user not in self.category.subscribers.all()
+            )
+
+        context['category'] = self.category
+        return context
+
+@login_required
+def subscribe_to_category(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    CategorySubscriber.objects.get_or_create(
+        user=request.user,
+        category=category
+    )
+    return redirect(reverse('biblio:news_list'))
+
+@login_required
+def unsubscribe_from_category(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    CategorySubscriber.objects.filter(
+        user=request.user,
+        category=category
+    ).delete()
+    return redirect('news_list')
+
+# @login_required()
+# def subscribe(request, pk):
+#     user = request.user
+#     category = Category.objects.get(id=pk)
+#     category.subscribers.add(user)
+#
+#     message = 'Вы успешно подписались на рассылку новостей, категории: '
+#     return render(request, 'news/subscribe.html', {'category':category, 'message':message})

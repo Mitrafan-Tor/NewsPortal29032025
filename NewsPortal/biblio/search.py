@@ -1,8 +1,8 @@
-from django_filters import FilterSet, DateTimeFilter
-from .models import Post
+from django_filters import FilterSet, DateTimeFilter, ModelMultipleChoiceFilter
+from .models import Post, Category
 from django.forms import DateTimeInput
 
-# Создаем свой набор фильтров для модели Product.
+# Создаем свой набор фильтров для модели Post.
 # FilterSet, который мы наследуем,
 # должен чем-то напомнить знакомые вам Django дженерики.
 class SearchPost(FilterSet):
@@ -27,3 +27,16 @@ class SearchPost(FilterSet):
            # количество товаров должно быть больше или равно
            'author__user__username': ['icontains'],
        }
+
+   categories = ModelMultipleChoiceFilter(
+       field_name='categories',  # имя поля в модели Post
+       queryset=Category.objects.all(),
+       label='Категории',
+   )
+
+   # class Category_fl:
+   #      model = Category
+   #      fields = {
+   #         # поиск по названию
+   #         'name': ['icontains'],
+   #      }
