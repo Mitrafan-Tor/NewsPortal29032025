@@ -4,23 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce851025-f3e3-4bdf-b609-d9ebde34a392" name="Changes" comment="приходят письма на почту при заказе  на сайте">
-      <change afterPath="$PROJECT_DIR$/NewsPortal/biblio/utils/email_utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NewsPortal/templates/email/new_post_notification.html" afterDir="false" />
+    <list default="true" id="ce851025-f3e3-4bdf-b609-d9ebde34a392" name="Changes" comment="GPT Analysis">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPortal/NewsPortal/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPortal/NewsPortal/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPortal/biblio/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPortal/biblio/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPortal/biblio/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPortal/biblio/migrations/0002_category_subscribers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPortal/biblio/migrations/0003_alter_category_subscribers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPortal/biblio/migrations/0004_alter_category_subscribers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPortal/biblio/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPortal/biblio/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPortal/biblio/signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPortal/biblio/signals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPortal/biblio/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPortal/biblio/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPortal/biblio/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPortal/biblio/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPortal/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPortal/templates/news/news_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPortal/templates/news/news_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPortal/templates/news/news_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPortal/templates/news/news_list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742924815973</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="GPT Analysis">
+      <option name="closed" value="true" />
+      <created>1743340903506</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1743340903506</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -165,6 +158,7 @@
     <MESSAGE value="Работает список, создание, редактирование, удаление списков и новостей" />
     <MESSAGE value="Регистраци , верификация, группы и права доступа" />
     <MESSAGE value="приходят письма на почту при заказе  на сайте" />
-    <option name="LAST_COMMIT_MESSAGE" value="приходят письма на почту при заказе  на сайте" />
+    <MESSAGE value="GPT Analysis" />
+    <option name="LAST_COMMIT_MESSAGE" value="GPT Analysis" />
   </component>
 </project>
