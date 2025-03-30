@@ -1,19 +1,13 @@
-from gc import get_objects
-
-from django.shortcuts import get_object_or_404, render
-from django.template.defaulttags import querystring
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post
+from .models import Post, Category, CategorySubscriber
 from datetime import datetime
 from .search import SearchPost
 from .forms import PostForm
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.decorators import login_required  #+
-from django.shortcuts import get_object_or_404, redirect   #+
-from .models import Category, CategorySubscriber           #+
+from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.urls import reverse
 
@@ -62,6 +56,7 @@ class PostCreate(PermissionRequiredMixin, CreateView):
     # и новый шаблон, в котором используется форма.
     template_name = 'news/news_create.html'
     permission_required = ('biblio.add_post',)
+
 
 
 
@@ -194,11 +189,4 @@ def unsubscribe_from_category(request, category_id):
     ).delete()
     return redirect('news_list')
 
-# @login_required()
-# def subscribe(request, pk):
-#     user = request.user
-#     category = Category.objects.get(id=pk)
-#     category.subscribers.add(user)
-#
-#     message = 'Вы успешно подписались на рассылку новостей, категории: '
-#     return render(request, 'news/subscribe.html', {'category':category, 'message':message})
+

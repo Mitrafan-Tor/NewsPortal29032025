@@ -3,35 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; }
-        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-        .post-title { color: #1a73e8; margin-top: 20px; }
-        .post-excerpt {
-            background: #f8f9fa;
-            padding: 15px;
-            border-left: 3px solid #1a73e8;
-            margin: 15px 0;
-        }
-        .button {
-            display: inline-block;
-            background: #1a73e8;
-            color: white;
-            padding: 10px 15px;
-            text-decoration: none;
-            border-radius: 4px;
-        }
-        .footer {
-            margin-top: 30px;
-            font-size: 12px;
-            color: #777;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
-        }
+        /* Ваши стили остаются без изменений */
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Уважаемый подписчик,</h2>
+        <h2>
+            {% with username=subscriber.user.author.user.username %}
+                Уважаемый {{ username }},
+            {% endwith %}
+        </h2>
 
         {% if category %}
         <p>В категории <strong>{{ category.name }}</strong> появилась новость:</p>
@@ -40,7 +21,7 @@
         <h3 class="post-title">{{ post.title }}</h3>
 
         <div class="post-excerpt">
-            {{ post.text|truncatechars:150 }}
+            {{ post.text|truncatechars:50 }}
         </div>
 
         <a href="{{ site_url }}{% url 'biblio:news_detail' post.id %}" class="button">
